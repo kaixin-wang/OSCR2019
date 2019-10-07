@@ -1,7 +1,7 @@
 Data Wrangling in R
 ================
 Kaixin Wang
-OSCR - Summer Session C 2019
+OSCR project - Summer Session C 2019
 
 **Note**: Some contents are based on the book *An introduction to data cleaning with R*, by Edwin de Jonge and Mark van der Loo.
 
