@@ -105,4 +105,6 @@ mean(vars, na.rm = T)  # ignore the NAs and compute the summary statistics
 
     ## [1] 13.16667
 
-Go and check data type coercion at this [link](https://github.com/kaixin-wang/OSCR2019/blob/master/DataWrangling-DataType.md).
+Advance to the topic of **Data Manipulation - Data Type Coercion** [here](https://kaixin-wang.github.io/DataManipulation1/).
+
+Advance to the topic of **Data Manipulation - Outlier Analysis** [here](https://kaixin-wang.github.io/DataManipulation2/).
