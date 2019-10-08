@@ -38,6 +38,7 @@ idx
 
     ## [1]  59  98 115 118
 
+
 1.  To find the location where the character "NA", "na", "N/A", or "n/a" are:
 
 ``` r
@@ -103,3 +104,5 @@ mean(vars, na.rm = T)  # ignore the NAs and compute the summary statistics
 ```
 
     ## [1] 13.16667
+
+Go and check data type coercion at this [link](https://github.com/kaixin-wang/OSCR2019/blob/master/DataWrangling-DataType.md).
