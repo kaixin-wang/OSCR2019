@@ -38,6 +38,7 @@ idx
 
     ## [1]  59  98 115 118
 
+
 1.  To find the location where the character "NA", "na", "N/A", or "n/a" are:
 
 ``` r
@@ -103,3 +104,7 @@ mean(vars, na.rm = T)  # ignore the NAs and compute the summary statistics
 ```
 
     ## [1] 13.16667
+
+Advance to the topic of **Data Manipulation - Data Type Coercion** [here](https://kaixin-wang.github.io/DataManipulation1/).
+
+Advance to the topic of **Data Manipulation - Outlier Analysis** [here](https://kaixin-wang.github.io/DataManipulation2/).
