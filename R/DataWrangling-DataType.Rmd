@@ -1,37 +1,41 @@
 ---
-title: "Data Wrangling in R"
+title: "Converting data type with R"
 subtitle: "How to Check & Convert Data Types using R"
-author: "Kaixin Wang"
-date: "OSCR - Summer Session C 2019"
-output: rmarkdown::github_document
+# author: "Kaixin Wang"
+# date: "OSCR - Summer Session C 2019"
+# output: rmarkdown::github_document
+output: html_document
 ---
 
-**Note**: Some contents are based on the book *An introduction to data cleaning with R*, by Edwin de Jonge and  Mark van der Loo.
+Import data:
 
-1. To import the input dataset:
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = "")
+```
 
-```{r, message = F}
+```{r, message = F, include=T}
 library(readr)
 input = read_csv("person_info.csv")
 input
 ```
 
-2. To check the data type of the object:
+Check the data type:
 
+In this section, we introduce `str`, `summary`, `class`, and `typeof` functions.
 
-(1) `str`() function
+- `str`() function
 
 ```{r}
 str(input)  # data structure of the object
 ```
 
-(2) `summary`() function:
+- `summary`() function:
 
 ```{r}
 summary(input)  # summary statistics of the object
 ```
 
-(3) `class`() and `typeof`() functions
+- `class`() and `typeof`() functions
 
 ```{r}
 class(input$first_name)  # class of the object
@@ -43,11 +47,11 @@ class(input$age)  # class of the object
 typeof(input$age)  # type of the object
 ```
 
-3. Type coercion: 
+Data type coercion:
 
- `as.numeric`, `as.logical`, `as.integer`, `as.double`, `as.factor`, and `as.character`
+In this section, we introduce `as.numeric`, `as.logical`, `as.integer`, `as.double`, `as.factor`, and `as.character` functions.
  
-(1) examples:
+- examples:
  
 ```{r}
 age <- input$age 
@@ -58,50 +62,12 @@ as.character(age) # to a character vector
 as.factor(age)    # to a factor
 ```
  
-(2) `as.logical`:
+- `as.logical()` function:
 
-- if the input is numeric: 0 is converted to FALSE, else converted to TRUE
-- if the input is character: NA produced
+    - if the input is numeric: 0 is converted to FALSE, else converted to TRUE
+    - if the input is character: NA produced
 
-(3) `as.factor`:
+- `as.factor()` function:
 
-- the order of the levels is in alpha-numeric order
+    - the order of the levels is in alpha-numeric order
 
-4. Datetime object: `lubridate` library
-
-```{r, messgae = F}
-library(lubridate)
-dates <- c("15/02/2013", "15 Feb 13", "It happened on 15 02 '13")
-dmy(dates)
-
-mdy(input$birthday)
-```
-
-Note: There are similar functions for all permutations of d, m and y. Explicitly, all of the following
-functions exist: `dmy myd ydm mdy dym ymd`.
-
-5. character manipulation:
-
-(1) string normalization
-
-```{r}
-library(stringr)
-str_trim(" hello world ")
-str_trim(" hello world ", side = "left")
-str_trim(" hello world ", side = "right")
-
-toupper("Hello world")
-tolower("Hello World")
-
-input$City[5]
-input$City[5] = str_trim(input$City[5], side = "right")
-input$City[5]
-```
-
-(2) approximate string matching
-
-```{r}
-gender <- c("M", "male ", "Female", "fem.")
-grepl("m", gender)
-grep("m", gender)
-```

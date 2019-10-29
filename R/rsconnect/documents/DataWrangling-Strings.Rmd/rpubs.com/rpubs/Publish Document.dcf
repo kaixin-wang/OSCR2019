@@ -1,0 +1,10 @@
+name: Publish Document
+title:
+username:
+account: rpubs
+server: rpubs.com
+hostUrl: rpubs.com
+appId: https://api.rpubs.com/api/v1/document/539079/6a7eef84420146d29e3920058d6ca4ab
+bundleId: https://api.rpubs.com/api/v1/document/539079/6a7eef84420146d29e3920058d6ca4ab
+url: http://rpubs.com/wangkx/539079
+when: 1571068310.68939

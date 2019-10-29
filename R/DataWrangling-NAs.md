@@ -1,11 +1,7 @@
-Data Wrangling in R
+Missing values with R
 ================
-Kaixin Wang
-OSCR - Summer Session C 2019
 
-**Note**: Some contents are based on the book *An introduction to data cleaning with R*, by Edwin de Jonge and Mark van der Loo.
-
-1.  To import the input dataset:
+Import data:
 
 ``` r
 library(readr)
@@ -29,7 +25,7 @@ input
     # ... with 5 more variables: car_1 <chr>, gpa <dbl>, year <chr>,
     #   class_of <int>, online_signiture <chr>
 
-1.  To find the location of the NAs:
+Find the location of the NAs:
 
 ``` r
 idx = which(is.na(input))   # find the position of the NAs
@@ -38,7 +34,7 @@ idx
 
     [1]  59  98 115 118
 
-1.  To find the location where the character "NA", "na", "N/A", or "n/a" are:
+Find the locations of the character “NA”, “na”, “N/A”, or “n/a”:
 
 ``` r
 # NAs = c("na", "n/a", "NA", "N/A")
@@ -48,7 +44,7 @@ nas
 
     [1] 4 6
 
-1.  To find whether one row contains a missing value:
+Find whether one row contains any missing values:
 
 ``` r
 complete.cases(input$car_1)
@@ -56,7 +52,7 @@ complete.cases(input$car_1)
 
      [1]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE
 
-1.  To impute the missing values with NA:
+Impute the missing values with `NA`:
 
 ``` r
 input$car_1[nas] <- NA   # impute with NAs
@@ -66,7 +62,7 @@ input$car_1
      [1] "6ZUA618"  "982KRK"   "PS9-S917" NA         "6XNK620"  NA        
      [7] "PS9-S917" NA         "WCE-2823" "VDS-5639"
 
-1.  To omit row with missing value(s):
+Omit row(s) with missing value(s):
 
 ``` r
 na.omit(input)   # remove rows that contain any NA
@@ -83,12 +79,12 @@ na.omit(input)   # remove rows that contain any NA
     # ... with 5 more variables: car_1 <chr>, gpa <dbl>, year <chr>,
     #   class_of <int>, online_signiture <chr>
 
-1.  Typical approaches to handle missing values:
+Typical approaches to handle missing values:
 
 -   impute with `NA`
 -   impute with the median/mean of the data
 
-1.  To ignore missing values in calculations:
+To ignore missing values in calculations:
 
 ``` r
 # example:

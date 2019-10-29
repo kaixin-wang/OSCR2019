@@ -1,11 +1,7 @@
-Data Wrangling in R
+Check and clean outliers with R
 ================
-Kaixin Wang
-OSCR - Summer Session C 2019
 
-**Note**: Some contents are based on the book *An introduction to data cleaning with R*, by Edwin de Jonge and Mark van der Loo.
-
-1.  Import the input dataset:
+Import data:
 
 ``` r
 library(readr)
@@ -29,7 +25,7 @@ input
     # ... with 5 more variables: car_1 <chr>, gpa <dbl>, year <chr>,
     #   class_of <int>, online_signiture <chr>
 
-1.  Use boxplot to pinpoint the outliers:
+Using boxplot to pinpoint the outliers:
 
 A point is defined as an outlier if it is less than *Q*<sub>1</sub> − 1.5 × *I**Q**R* (interquartile range) or above *Q*<sub>3</sub> + 1.5 × *I**Q**R*.
 
@@ -98,3 +94,5 @@ boxplot(age, xlab = "age", main = "boxplot for the age after removing the outlie
 ```
 
 ![](DataWranglingIII-outliers_files/figure-markdown_github/unnamed-chunk-3-2.png)
+
+There is no outliers existing in this example (example 2).

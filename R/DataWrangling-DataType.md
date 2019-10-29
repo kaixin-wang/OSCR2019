@@ -1,11 +1,7 @@
-Data Wrangling in R
+Converting data type with R
 ================
-Kaixin Wang
-OSCR - Summer Session C 2019
 
-**Note**: Some contents are based on the book *An introduction to data cleaning with R*, by Edwin de Jonge and Mark van der Loo.
-
-1.  To import the input dataset:
+Import data:
 
 ``` r
 library(readr)
@@ -29,11 +25,11 @@ input
     ## # ... with 5 more variables: car_1 <chr>, gpa <dbl>, year <chr>,
     ## #   class_of <int>, online_signiture <chr>
 
-1.  To check the data type of the object:
+Check the data type:
 
-<!-- -->
+In this section, we introduce `str`, `summary`, `class`, and `typeof` functions.
 
-1.  `str`() function
+-   `str`() function
 
 ``` r
 str(input)  # data structure of the object
@@ -88,7 +84,7 @@ str(input)  # data structure of the object
     ##   .. ..- attr(*, "class")= chr  "collector_guess" "collector"
     ##   ..- attr(*, "class")= chr "col_spec"
 
-1.  `summary`() function:
+-   `summary`() function:
 
 ``` r
 summary(input)  # summary statistics of the object
@@ -123,7 +119,7 @@ summary(input)  # summary statistics of the object
     ##                     3rd Qu.:2021                     
     ##                     Max.   :2022
 
-1.  `class`() and `typeof`() functions
+-   `class`() and `typeof`() functions
 
 ``` r
 class(input$first_name)  # class of the object
@@ -149,11 +145,11 @@ typeof(input$age)  # type of the object
 
     ## [1] "integer"
 
-1.  Type coercion:
+Data type coercion:
 
-`as.numeric`, `as.logical`, `as.integer`, `as.double`, `as.factor`, and `as.character`
+In this section, we introduce `as.numeric`, `as.logical`, `as.integer`, `as.double`, `as.factor`, and `as.character` functions.
 
-1.  examples:
+-   examples:
 
 ``` r
 age <- input$age 
@@ -188,105 +184,11 @@ as.factor(age)    # to a factor
     ##  [1] 23 24 22 57 24 19 28 21 24 23
     ## Levels: 19 21 22 23 24 28 57
 
-1.  `as.logical`:
+-   `as.logical()` function:
 
--   if the input is numeric: 0 is converted to FALSE, else converted to TRUE
--   if the input is character: NA produced
+    -   if the input is numeric: 0 is converted to FALSE, else converted to TRUE
+    -   if the input is character: NA produced
 
-1.  `as.factor`:
+-   `as.factor()` function:
 
--   the order of the levels is in alpha-numeric order
-
-1.  Datetime object: `lubridate` library
-
-``` r
-library(lubridate)
-```
-
-    ## 
-    ## Attaching package: 'lubridate'
-
-    ## The following object is masked from 'package:base':
-    ## 
-    ##     date
-
-``` r
-dates <- c("15/02/2013", "15 Feb 13", "It happened on 15 02 '13")
-dmy(dates)
-```
-
-    ## [1] "2013-02-15" "2013-02-15" "2013-02-15"
-
-``` r
-mdy(input$birthday)
-```
-
-    ##  [1] "1996-09-29" "1995-06-11" "1997-02-27" "1989-08-03" "1995-07-17"
-    ##  [6] "2000-03-27" "1991-03-15" "1997-01-02" "1995-03-16" "1996-08-02"
-
-Note: There are similar functions for all permutations of d, m and y. Explicitly, all of the following functions exist: `dmy myd ydm mdy dym ymd`.
-
-1.  character manipulation:
-
-<!-- -->
-
-1.  string normalization
-
-``` r
-library(stringr)
-str_trim(" hello world ")
-```
-
-    ## [1] "hello world"
-
-``` r
-str_trim(" hello world ", side = "left")
-```
-
-    ## [1] "hello world "
-
-``` r
-str_trim(" hello world ", side = "right")
-```
-
-    ## [1] " hello world"
-
-``` r
-toupper("Hello world")
-```
-
-    ## [1] "HELLO WORLD"
-
-``` r
-tolower("Hello World")
-```
-
-    ## [1] "hello world"
-
-``` r
-input$City[5]
-```
-
-    ## [1] "Portland, Oregon(OR), 97217\n\n"
-
-``` r
-input$City[5] = str_trim(input$City[5], side = "right")
-input$City[5]
-```
-
-    ## [1] "Portland, Oregon(OR), 97217"
-
-1.  approximate string matching
-
-``` r
-gender <- c("M", "male ", "Female", "fem.")
-grepl("m", gender)
-```
-
-    ## [1] FALSE  TRUE  TRUE  TRUE
-
-``` r
-grep("m", gender)
-```
-
-    ## [1] 2 3 4
+    -   the order of the levels is in alpha-numeric order

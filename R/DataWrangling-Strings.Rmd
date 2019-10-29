@@ -1,0 +1,63 @@
+---
+title: "Advanced Data Manipulation in R"
+subtitle: "datatime and string manipulations"
+# author: "Kaixin Wang"
+# date: "OSCR - Summer Session C 2019"
+# output: rmarkdown::github_document
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = "")
+```
+
+Import data:
+
+```{r, message = F}
+library(readr)
+input = read_csv("person_info.csv")
+input
+```
+
+Date-time manipulation:
+
+In R, we recommend using the `lubridate` library to for converting data in the format of `day-month-year` to a `datetime` object.
+
+```{r, messgae = F}
+library(lubridate)
+dates <- c("15/02/2013", "15 Feb 13", "It happened on 15 02 '13")
+dmy(dates)
+
+mdy(input$birthday)
+```
+
+Note: 
+
+There are similar functions for all permutations of `d`, `m` and `y`. Explicitly, all of the following
+functions exist: `dmy myd ydm mdy dym ymd`.
+
+String manipulation:
+
+- String normalization:
+
+```{r}
+library(stringr)
+str_trim(" hello world ")
+str_trim(" hello world ", side = "left")
+str_trim(" hello world ", side = "right")
+
+toupper("Hello world")
+tolower("Hello World")
+
+input$City[5]
+input$City[5] = str_trim(input$City[5], side = "right")
+input$City[5]
+```
+
+- Approximate string matching:
+
+```{r}
+gender <- c("M", "male ", "Female", "fem.")
+grepl("m", gender)
+grep("m", gender)
+```

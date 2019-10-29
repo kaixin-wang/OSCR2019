@@ -1,18 +1,17 @@
 ---
-title: "Data Wrangling in R"
+title: "Missing values with R"
 subtitle: "How to Check & Clean Missing Values / NA using R"
-author: "Kaixin Wang"
-date: "OSCR - Summer Session C 2019"
-output: rmarkdown::github_document
+# author: "Kaixin Wang"
+# date: "OSCR - Summer Session C 2019"
+# output: rmarkdown::github_document
+output: html_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, comment = "")
 ```
 
-**Note**: Some contents are based on the book *An introduction to data cleaning with R*, by Edwin de Jonge and  Mark van der Loo.
-
-1. To import the input dataset:
+Import data:
 
 ```{r, message = F}
 library(readr)
@@ -20,14 +19,14 @@ input = read_csv("person_info.csv")
 input
 ```
 
-2. To find the location of the NAs:
+Find the location of the NAs:
 
 ```{r}
 idx = which(is.na(input))   # find the position of the NAs
 idx   
 ```
 
-3. To find the location where the character "NA", "na", "N/A", or "n/a" are:
+Find the locations of the character “NA”, “na”, “N/A”, or “n/a”:
 
 ```{r}
 # NAs = c("na", "n/a", "NA", "N/A")
@@ -35,31 +34,31 @@ nas = which(input$car_1 == "na" | input$car_1 == "n/a" | input$car_1 == "NA" | i
 nas
 ```
 
-4. To find whether one row contains a missing value:
+Find whether one row contains any missing values:
 
 ```{r}
 complete.cases(input$car_1)
 ```
 
-5. To impute the missing values with NA:
+Impute the missing values with `NA`:
 
 ```{r}
 input$car_1[nas] <- NA   # impute with NAs
 input$car_1
 ```
 
-6. To omit row with missing value(s): 
+Omit row(s) with missing value(s): 
 
 ```{r}
 na.omit(input)   # remove rows that contain any NA
 ```
 
-7. Typical approaches to handle missing values:
+Typical approaches to handle missing values:
 
 - impute with `NA`
 - impute with the median/mean of the data 
 
-8. To ignore missing values in calculations:
+To ignore missing values in calculations:
 
 ```{r}
 # example:
