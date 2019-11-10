@@ -14813,7 +14813,7 @@ $$R^2_{adj} = 1 - (1 - R^2) \frac{n - 1}{n - p - 1}$$<p>where $n$ is the sample 
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Summary-of-the-module">Summary of the module<a class="anchor-link" href="#Summary-of-the-module">&#182;</a></h4><p>By building two linear regression models using 6 and 3 predictors respectively, we observe that predictor variables <code>cadmium</code>, <code>copper</code> and <code>zinc</code> have very strong positive correlation with the response variable <code>lead</code>. In addition, we also observed that by adding three more predictors, <code>dist</code>, <code>elev</code> and <code>lime</code>, the $R^2_{adj}$ didn't get much improvement comparing to the model with only 3 predictors.</p>
 <p>Therefore, the final model that we decided to adopt is the reduced model with 3 predictors:</p>
-$$\text{Lead} \sim \text{Cadmium} + \text{Copper} + \text{Zinc}$$
+$$\text{Lead} \sim \text{Cadmium} + \text{lime} + \text{Zinc}$$
 </div>
 </div>
 </div>
